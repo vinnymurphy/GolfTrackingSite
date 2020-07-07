@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Chris Grime | Golf Tracker{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/golfapp.css' %}">
+    {% block stylesheet %}{% endblock %}
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+    <script src="{% static 'js/golfapp.js' %}"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'home' %}">Score Tracker</a></h1>
+        <!--<div class="menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>-->
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'course_list' %}">Courses</a></li>
+            {% if user.is_authenticated %}
+            <!--<p>Hi {{ user.username }}!</p>-->
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

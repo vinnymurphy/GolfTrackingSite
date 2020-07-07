@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="text-container">
+{% if user.is_authenticated %}
+<h2>Rounds</h2>
+<div class="link-button">
+    <a href="{% url 'round_create' %}" >Start a new round</a>
+</div>
+{% for round in rounds %}
+<a href="{% url 'round_detail' round.id %}" class="round-link"><div class="rounds-container">
+    <h3>{{ round.course.name }}</h3>
+    <h5>{{ round.created_on|date:"F d, Y" }}</h5> 
+</div></a>
+{% endfor %}
+
+{% else %}
+<h2>Welcome!</h2>
+<p>Login or create an account to start tracking your rounds.</p>
+{% endif %}
+</div>
+
+{% endblock %}

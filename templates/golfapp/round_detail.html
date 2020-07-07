@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Round at {{ round.course.name}}</h2>
+<div class="text-container">
+{% if round.name %}     
+    <p>"{{ round.name }}"</p>
+{% endif %}
+<p>Teed off at {{object.created_on|date:"g:i a"}} on {{object.created_on|date:"F d, Y" }} </p>
+    {% if object.completed_on  %}
+    <p>and finished at {{object.completed_on|date:"g:i a"}}</p>
+    {% endif %}
+</p>    
+{% if player_par > 0 %}
+<p>You shot {{player_par}} over mens par</p>
+{% else %}
+<p>You shot {{player_par|stringformat:"+d"|slice:"1:"}} under par</p>
+{% endif %}
+{% if user.is_authenticated and request.user.is_superuser %}
+    <a  href="{% url 'round_update'  round.id  %}">Update</a>
+    <a  href="{% url 'round_delete'  round.id  %}">Delete</a>
+{% endif %}
+</div>
+
+<div class="hole-list-container">
+{% for hole in holes %}
+    {% if forloop.counter0 == 0 or forloop.counter0|divisibleby:9 %}
+        <div class="hole-container">
+            <div class="info-container">
+                <p>Hole</p>
+            </div>
+            <div class="info-container {{round.tee_color}}" ><p>Yards</p></div>
+            <div class="info-container">
+                <p>Mens Par</p>
+            </div>
+            <div class="info-container">
+                <p>Ladies Par</p>
+            </div>
+            <div class="info-container WHITE">
+                <p>Score</p>
+            </div>
+            <div>
+                <!--<p>Act</p> -->
+            </div>
+
+        </div>
+    {% endif %}
+<div class="hole-container">
+<div class="info-container">
+<p>{{hole.number}}</p>
+</div>
+    {% for tee in tees %}
+        {% if tee.hole == hole %}
+        <div class="info-container {{round.tee_color}}">
+            <p>{{tee.yards}}</p>
+        </div>
+        {% endif %}
+    {% endfor %}
+    <div class="info-container">
+        <p>{{hole.mens_par}}</p>
+    </div>
+    <div class="info-container">
+        <p>{{hole.womens_par}}</p>
+    </div>
+    <div class="info-container WHITE">
+        {% for score in scores %}
+            {% if score.round == round and score.hole == hole %}
+            <p>{{ score.strokes }}</p>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+    <div>
+        <a href="{% url 'score_create' hole_pk=hole.pk round_pk=round.pk %}" >Add Score</a>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{course.name}}</h2>
+<div class="text-container">
+<p>{{ course.city}}, {{ course.state }}</p>
+
+{% if user.is_authenticated and request.user.is_superuser %}
+    <a  href="{% url 'course_update'  course.id  %}">Update</a>
+    <a  href="{% url 'course_delete'  course.id  %}">Delete</a>
+{% endif %}
+{% if user.is_authenticated %}
+<a href="{% url 'teecolor_create' course_pk=course.pk %}" >Add Tee color</a>
+<a href="{% url 'hole_create' course_pk=course.pk %}" >Add Hole</a>
+{% endif %}
+</div>
+<!--Holes for the course-->
+<div class="hole-list-container">
+{% for hole in holes %}
+    {% if forloop.counter0 == 0 or forloop.counter0|divisibleby:9 %}
+        <div class="hole-container">
+            <div class="info-container">
+                <h4>Hole</h4>
+            </div>
+
+            {% for color in course.tee_colors.all %}
+            <div class="info-container {{color.color}}" ><p>Yards</p></div>
+            {% endfor %}
+            <div class="info-container">
+                <p>Mens Par</p>
+            </div>
+            <div class="info-container">
+                <p>Ladies Par</p>
+            </div>
+            <div>
+                {% if user.is_authenticated %}
+                <p>Act</p>
+                {% else %}
+                <p>&nbsp;</p>
+                {% endif %}
+            </div>
+
+        </div>
+    {% endif %}
+    <div class="hole-container">
+        <div class="info-container">
+            <h4>{{hole.number}}</h4>
+        </div>
+        {% for color in course.tee_colors.all %}
+        <div class="info-container yards-container {{color.color}}" >
+            {% for tee in tees %}
+                {% if tee.color == color.color and tee.hole == hole %}
+                    <p><a href="{% url 'tee_update' pk=tee.pk hole_pk=hole.pk course_pk=course.pk %}">{{ tee.yards }}</a></p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <div class="info-container">
+            <p>{{hole.mens_par}}</p>
+        </div>
+        <div class="info-container">
+            <p>{{hole.womens_par}}</p>
+        </div>
+        {% if user.is_authenticated %}
+        <a href="{% url 'tee_create' hole_pk=hole.pk course_pk=course.pk %}" >Add Tee</a>
+        {% endif %}
+        {% if user.is_authenticated and request.user.is_superuser %}
+        <a  href="{% url 'hole_delete'  pk=hole.id course_pk=course.pk  %}">Del Hole</a>
+        {% endif %}
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}

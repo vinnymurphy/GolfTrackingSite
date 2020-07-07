@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Courses</h2>
+    {% for course in course_list %}
+    <a href="{% url 'course_detail'  course.id  %}" class="course-link"><div class="courses-container">
+            <h3>{{ course.name }}</h3>
+            <h5>{{ course.city }}, {{ course.state }}</h5>
+            {% if user.is_authenticated and request.user.is_superuser %}
+                <!--<a  href="{% url 'course_update'  course.id  %}">Update</a>
+                <a  href="{% url 'course_delete'  course.id  %}">Delete</a>-->
+            {% endif %}
+        </div></a>
+    {% endfor %}
+    <div class="link-button">
+        <a href="{% url 'course_create' %}" >Add Course</a>
+    </div>
+
+{% endblock %}

@@ -89,6 +89,15 @@ class Tee(models.Model):
     def __str__(self):
         return str(self.yards) + str(Hole)
 
+class CoursePicture(models.Model):
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    created_on = models.DateTimeField(default=datetime.now)
+    picture = models.ImageField(upload_to='uploads/course/', verbose_name='image')
+    course = models.ForeignKey('Course', on_delete=models.SET_NULL, null=True, blank=False, related_name='pictures') 
+
+    class Meta:
+        ordering = ['-created_on']
+
 
 # # # # # # # # # # # # # # #
 #   Round related models   #
@@ -104,7 +113,6 @@ class Round(models.Model):
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     created_on = models.DateTimeField(default=datetime.now)
     completed_on = models.DateTimeField(null=True, blank=True)
-
     tee_color = models.ForeignKey('TeeColor', on_delete=models.SET_NULL, null=True, blank=False, related_name='teecolor')
 
     class Meta:

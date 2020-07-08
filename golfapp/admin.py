@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import GolferUserCreationForm, GolferUserChangeForm
-from .models import GolferUser, Tee, TeeColor, Course, Round
+from .models import GolferUser, Tee, TeeColor, Course, Round, CoursePicture
 
 # Register your models here.
 class GolferUserAdmin(UserAdmin):
@@ -17,3 +17,4 @@ admin.site.register(Tee)
 admin.site.register(TeeColor)
 admin.site.register(Course)
 admin.site.register(Round)
+admin.site.register(CoursePicture)

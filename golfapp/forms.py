@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.core.exceptions import NON_FIELD_ERRORS # Allow the use of a custom error message 
 
-from .models import GolferUser, Hole, Tee, Course, TeeColor, Score
+from .models import GolferUser, Hole, Tee, Course, TeeColor, Score, CoursePicture
 
 class GolferUserCreationForm(UserCreationForm):
     class Meta:
@@ -70,4 +70,13 @@ class ScoreForm(ModelForm):
             NON_FIELD_ERRORS: {
                 'unique_together': "The %(model_name)s already exists for this course.",
             }
+        }
+
+class CoursePictureForm(ModelForm):
+    class Meta:
+        model = CoursePicture
+        fields = ('picture', 'course',)
+        # Course is set automaticaly 
+        widgets = {
+            'course': forms.HiddenInput,
         }

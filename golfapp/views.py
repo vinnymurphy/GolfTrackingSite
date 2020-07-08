@@ -7,8 +7,8 @@ from datetime import datetime, time, date
 
 from django.db.models import Sum
 
-from .forms import GolferUserCreationForm, HoleForm, TeeForm, TeeColorForm, ScoreForm
-from .models import Course, TeeColor, Hole, Tee, Round, Score
+from .forms import GolferUserCreationForm, HoleForm, TeeForm, TeeColorForm, ScoreForm, CoursePictureForm
+from .models import Course, TeeColor, Hole, Tee, Round, Score, CoursePicture
 
 
 # Create your views here.
@@ -50,6 +50,7 @@ class CourseDetail(DetailView):
         context = super().get_context_data(**kwargs)
         context['holes'] = Hole.objects.filter(course_id=self.object.pk).order_by('number')
         context['tees'] = Tee.objects.select_related('hole')
+        context['pictures'] = CoursePicture.objects.filter(course_id=self.object.pk).order_by('created_on')
         return context
 
 class CourseUpdate(UpdateView):
@@ -82,6 +83,40 @@ class TeeColorCreate(CreateView):
         course_id = self.kwargs['course_pk']
         return reverse_lazy('course_detail', kwargs= {'pk': course_id})
 
+class CoursePictureCreate(CreateView):
+    model = CoursePicture
+    #fields = ['picture',]
+    form_class = CoursePictureForm
+
+    # Gets the course pk from the url
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['course'] = Course.objects.get(pk=self.kwargs['course_pk'])
+        return context
+
+    # set the Holes course value to the course in context data
+    def get_initial(self):
+        initial = super(CoursePictureCreate, self).get_initial()
+        initial['course'] = self.kwargs['course_pk']
+        return initial
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.created_by = self.request.user
+        return super(CoursePictureCreate, self).form_valid(form)
+
+    # Returns the user to the course this hole was created for
+    def get_success_url(self, **kwargs):
+        course_id = self.kwargs['course_pk']
+        return reverse_lazy('course_detail', kwargs= {'pk': course_id})
+
+class CoursePictureDetail(DetailView):
+    model = CoursePicture
+    form_class = CoursePictureForm
+
+    def get_success_url(self, **kwargs):
+        course_id = self.kwargs['course_pk']
+        return reverse_lazy('course_detail', kwargs= {'pk': course_id})
 
 # Holes currently make the user input which number the hole is. 
 # In the future I want holes to be added autmatically. Hole number would increment. 
@@ -101,11 +136,30 @@ class HoleCreate(CreateView):
         initial['course'] = self.kwargs['course_pk']
         return initial
 
-    # Returns the user to the course this hole was created for
+    # Returns the user to the course this picture was created for
     def get_success_url(self, **kwargs):
         course_id = self.kwargs['course_pk']
         return reverse_lazy('course_detail', kwargs= {'pk': course_id})
     
+class CoursePictureDelete(DeleteView):
+    model = CoursePicture
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['course'] = Course.objects.get(pk=self.kwargs['course_pk'])
+        context['coursepicture'] = CoursePicture.pk
+        return context
+
+    def get_initial(self):
+        initial = super(CoursePictureDelete, self).get_initial()
+        initial['course'] = self.kwargs['course_pk']
+        return initial
+
+    def get_success_url(self, **kwargs):
+        course_id = self.kwargs['course_pk']
+        return reverse_lazy('course_detail', kwargs= {'pk': course_id})
+
+
 # In the future I will want the Hole to be deleted off the end of the course.
 # An update view will need to be added to modify the data of holes
 class HoleDelete(DeleteView):

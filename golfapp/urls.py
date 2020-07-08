@@ -1,8 +1,10 @@
 from django.urls import path
 from django.conf.urls import url
+from django.conf import settings
+from django.conf.urls.static import static
 
 from .views import SignUpView, HomeView
-from .views import CourseList, CourseCreate, CourseDelete, CourseUpdate, CourseDetail
+from .views import CourseList, CourseCreate, CourseDelete, CourseUpdate, CourseDetail, CoursePictureCreate, CoursePictureDetail, CoursePictureDelete
 from .views import TeeColorCreate
 from .views import HoleCreate, HoleDelete
 from .views import TeeCreate, TeeDelete, TeeUpdate
@@ -36,4 +38,8 @@ urlpatterns = [
 
     url(r'round/(?P<round_pk>\w+)/hole/(?P<hole_pk>\w+)/score/create/', ScoreCreate.as_view(), name='score_create'),
 
-]
+    url(r'courses/(?P<course_pk>\w+)/coursepicture/create', CoursePictureCreate.as_view(), name='coursepicture_create'),
+    url(r'courses/(?P<course_pk>\w+)/coursepicture/(?P<pk>\w+)', CoursePictureDetail.as_view(), name='coursepicture_detail'),
+    url(r'courses/(?P<course_pk>\w+)/coursepictures/delete/(?P<pk>\w+)', CoursePictureDelete.as_view(), name='coursepicture_delete'),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<img src="{{object.picture.url}}">
+
+{% if user.is_authenticated and object.created_by == user or request.user.is_superuser %}
+<a href="{% url 'coursepicture_delete' pk=object.pk course_pk=object.course.pk %}">Delete Picture</a>
+{% endif %}
+
+{% endblock %}

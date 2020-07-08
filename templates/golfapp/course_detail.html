@@ -10,11 +10,22 @@
     <a  href="{% url 'course_update'  course.id  %}">Update</a>
     <a  href="{% url 'course_delete'  course.id  %}">Delete</a>
 {% endif %}
-{% if user.is_authenticated %}
-<a href="{% url 'teecolor_create' course_pk=course.pk %}" >Add Tee color</a>
-<a href="{% url 'hole_create' course_pk=course.pk %}" >Add Hole</a>
-{% endif %}
+
 </div>
+
+<div class="picture-list-container">
+    {% for picture in pictures %}
+    <div class="picture-container">
+        <a href="{% url 'coursepicture_detail' course_pk=course.pk pk=picture.pk %}">
+            <img src="{{picture.picture.url}}">
+        </a>
+    </div>
+    {% endfor %}
+    <div class="picture-container">
+        <a href="{% url 'coursepicture_create' course_pk=course.pk %}" class="add-picture-link" >+</a>
+    </div>
+</div>
+
 <!--Holes for the course-->
 <div class="hole-list-container">
 {% for hole in holes %}
@@ -70,6 +81,10 @@
         {% endif %}
     </div>
 {% endfor %}
+{% if user.is_authenticated %}
+<a href="{% url 'hole_create' course_pk=course.pk %}" >Add Hole</a>
+{% endif %}
+
 </div>
 
 {% endblock %}

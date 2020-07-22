@@ -23,6 +23,7 @@
     </header>
     <nav>
         <ul>
+            <li><a href="{% url 'home' %}">Rounds</a></li>
             <li><a href="{% url 'course_list' %}">Courses</a></li>
             {% if user.is_authenticated %}
             <!--<p>Hi {{ user.username }}!</p>-->

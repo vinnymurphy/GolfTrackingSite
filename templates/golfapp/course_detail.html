@@ -21,8 +21,12 @@
         </a>
     </div>
     {% endfor %}
-    <div class="picture-container">
+    <div class="add-picture-link-container">
         <a href="{% url 'coursepicture_create' course_pk=course.pk %}" class="add-picture-link" >+</a>
+    </div>
+    
+    <div class="picture-container">
+        <!--<a href="{% url 'coursepicture_create' course_pk=course.pk %}" class="add-picture-link" >+</a>-->
     </div>
 </div>
 

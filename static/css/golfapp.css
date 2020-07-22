@@ -91,38 +91,37 @@ button {
     border-radius: 1em;
 }
 .picture-list-container {
-    display: flex;
-    overflow-x: auto;
-
+    width: 100%;
+    height: 32vh;
+    overflow: scroll;
+    white-space: nowrap;
+    margin: 0.33em 0;
 }
 .picture-list-container::-webkit-scrollbar {
     display: none;
   }
 .picture-container {
-    border-radius: 1em;
-    flex: 0 0 60vw;
+    display: inline-block;
 
-    padding: 0.33em 0.33em;
 }
 .picture-container img {
-    max-width: 100%;
-    min-height: 100%;
-    height: auto;
-    width: auto;
-    display: block;
+    height:30vh;
     border-radius: 1em;
     border: 1px solid transparent;
 }
-.add-picture-link {
-    border-radius: 1em;
+.add-picture-link-container {
     display: inline-block;
-    width: 100%;
-    padding: 30% 0;
-    top: 50%;
-    border: 1px solid black;
     text-align: center;
-    font-size: larger;
+    vertical-align: top;
+    width:30vh;
+    border: 1px solid #303030;
+    border-radius: 1em;
+}
+.add-picture-link {
+    line-height: 30vh;
     text-decoration: none;
+    font-size: 2em;
+
 }
 .courses-container > h5, .rounds-container > h5 {
     padding-top:0.33em;
@@ -251,7 +250,8 @@ h2 {
     flex: 0 0 40rem;
 }
 .picture-list-container {
-
+    max-width: 40rem;
+    margin: 0 auto;
 }
 .picture-container {
 

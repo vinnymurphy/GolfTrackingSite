@@ -1,4 +1,4 @@
-### Golf Tracking Site
+# Golf Tracking Site
 
 [Running Project](http://golf.grimechristopher.com)
 

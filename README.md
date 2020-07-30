@@ -23,9 +23,9 @@ When a user logs in and creates an account the user can the create a new round t
 ## Screenshots
 
 <img src="screenshots/golf-rounds.png" alt="Your image title" width="400"/>
-img src="screenshots/golf-courses.png" alt="Your image title" width="400"/>
-img src="screenshots/golf-azusacourse.png" alt="Your image title" width="400"/>
-img src="screenshots/golf-roundscreen.png" alt="Your image title" width="400"/>
+<img src="screenshots/golf-courses.png" alt="Your image title" width="400"/>
+<img src="screenshots/golf-azusacourse.png" alt="Your image title" width="400"/>
+<img src="screenshots/golf-roundscreen.png" alt="Your image title" width="400"/>
                                                            
 ---
 

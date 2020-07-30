@@ -7,9 +7,23 @@ Please feel free to test out the application by adding your favorite golf course
 
 ## Description
 
-This is a personal project I started to practice my web development skills and learn a new framework. This application is built using the Django Python Web framework.
-The application allows users to add golf courses to the database. Golf courses can have any number of holes and each hole can have multiple tees with varying distances.
-When a user logs in and creates an account the user can the create a new round to track their score. 
+### Summary
+
+Golf Tracker is a website that allows anyone to create and view score cards of any golf course. Loggged in users are able to track the score of their rounds as well as add golf courses to the database. Users are also able to add and edit holes, tees, and pictures to golf courses in the database. 
+
+### Reason For Development
+
+- Wanted to learn Django
+- Wanted to create an application based on golf
+- Big golf fan and love to play wanted to create something that involved my favorite sport
+- Decided designing a database to track golf course data and round scores would be a good challenge
+
+### Features
+
+- Create and view scorecards for golf courses
+- Add and view pictures of golf courses
+- Track golf scores of rounds played
+- User authentication utilizing custom user types in Django
 
 ## Technologies
 
@@ -23,7 +37,7 @@ When a user logs in and creates an account the user can the create a new round t
 ## Screenshots
 
 <img src="screenshots/golf-rounds.png" alt="Your image title" width="400"/><img src="screenshots/golf-courses.png" alt="Your image title" width="400"/><img src="screenshots/golf-azusacourse.png" alt="Your image title" width="400"/><img src="screenshots/golf-roundscreen.png" alt="Your image title" width="400"/>
-                                                           
+
 ---
 
 [grimechristopher.com](https://grimechristopher.com)  

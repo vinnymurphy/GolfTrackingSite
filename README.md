@@ -22,8 +22,8 @@ When a user logs in and creates an account the user can the create a new round t
 
 ## Screenshots
 
-![Home Page](screenshots/golf-rounds.png)
-<img src="screenshots/golf-rounds.png" width="250" height="250>
+<img src="screenshots/golf-rounds.png" alt="Your image title" width="500"/>
+                                                           
 ---
 
 [grimechristopher.com](https://grimechristopher.com)  

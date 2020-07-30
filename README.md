@@ -1,6 +1,8 @@
-## Golf Tracking Site
+### Golf Tracking Site
 
 [Running Project](http://golf.grimechristopher.com)
+
+## Description
 
 This is a personal project I started to practice my web development skills and learn a new framework. This application is built using the Django Python Web framework.
 The application allows users to add golf courses to the database. Golf courses can have any number of holes and each hole can have multiple tees with varying distances.

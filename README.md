@@ -20,6 +20,9 @@ When a user logs in and creates an account the user can the create a new round t
 - Sqlite version 2.6.0
 - Tested on Apache and nginx servers
 
+## Screenshots
+
+[Home Page](screenshots/golf-rounds.png)
 ---
 
 [grimechristopher.com](https://grimechristopher.com)  

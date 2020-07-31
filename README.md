@@ -32,7 +32,7 @@ I learned how to use class-based views to implement CRUD operations, display dyn
 
 ## Screenshots
 
-<img src="screenshots/golf-rounds.png" alt="Your image title" width="400"/><img src="screenshots/golf-courses.png" alt="Your image title" width="400"/><img src="screenshots/golf-azusacourse.png" alt="Your image title" width="400"/><img src="screenshots/golf-roundscreen.png" alt="Your image title" width="400"/>
+<img src="screenshots/golf-rounds.png" alt="Rounds List" width="400"/><img src="screenshots/golf-courses.png" alt="Courses List" width="400"/><img src="screenshots/golf-azusacourse.png" alt="Course Page" width="400"/><img src="screenshots/golf-roundscreen.png" alt="Round Page" width="400"/>
 
 ## Future Development
 

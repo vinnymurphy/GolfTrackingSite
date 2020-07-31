@@ -9,18 +9,14 @@ Please feel free to test out the application by adding your favorite golf course
 
 ## Description
 
-### Summary
-
 Golf Tracker is a website that allows anyone to create and view score cards of any golf course. Loggged in users are able to track the score of their rounds as well as add golf courses to the database. Users are also able to add and edit holes, tees, and pictures to golf courses in the database. 
-
-### Reason For Development
 
 - Wanted to learn Django
 - Wanted to create an application based on golf
 - Big golf fan and love to play wanted to create something that involved my favorite sport
 - Decided designing a database to track golf course data and round scores would be a good challenge
 
-### Features
+## Features
 
 - Create and view scorecards for golf courses
 - Add and view pictures of golf courses

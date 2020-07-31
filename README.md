@@ -1,6 +1,6 @@
 # Golf Tracking Site
 
-> A Django based web application designed to track golf scores
+> A Django based web application designed to keep track of your golf score.
 
 ## Demo
 [golf.grimechristopher.com](http://golf.grimechristopher.com)
@@ -31,6 +31,17 @@ Golf Tracker is a website that allows anyone to create and view score cards of a
 - CSS
 - Sqlite version 2.6.0
 - Tested on Apache and nginx servers
+
+## Future Development
+
+I have many planned features in mind for continuing the development of this project:
+- Display the correct over/under par for men's or women's tees
+- Track the best scores for each course
+- Add data so users can see their best/worst/average scores
+- Add ability to upload pictures for rounds
+- Add more golfers to a round and compare scores
+- Add a comments or tips section to the courses
+- Add pictures to the courses list
 
 ## Screenshots
 

@@ -1,5 +1,7 @@
 # Golf Tracking Site
 
+> A Django based web application designed to track golf scores
+
 ## Demo
 [golf.grimechristopher.com](http://golf.grimechristopher.com)
 

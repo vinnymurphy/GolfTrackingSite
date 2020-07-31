@@ -1,6 +1,6 @@
 # Golf Tracking Site
 
-> A Django based web application designed to keep track your golf score.
+> Track the progress on your goal to sink more birdies!
 
 ## Demo
 [golf.grimechristopher.com](http://golf.grimechristopher.com)
@@ -29,7 +29,6 @@ I learned how to use class-based views to implement CRUD operations, display dyn
 - HTML
 - CSS
 - Sqlite version 2.6.0
-- Tested on Apache and nginx servers
 
 ## Screenshots
 

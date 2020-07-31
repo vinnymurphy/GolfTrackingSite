@@ -1,6 +1,6 @@
 # Golf Tracking Site
 
-> Track the progress on your goal to sink more birdies!
+> Track the progress on your goal to sink more birdies! Built in Django
 
 ## Demo
 [golf.grimechristopher.com](http://golf.grimechristopher.com)

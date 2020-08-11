@@ -254,9 +254,14 @@ class RoundDetail(DetailView):
         context['tees'] = Tee.objects.filter(color=self.object.tee_color)
         context['scores'] = Score.objects.filter(round_id=self.object.pk)
         context['total_score'] = Score.objects.filter(round_id=self.object.pk).aggregate(total_score=Sum('strokes'))
-        context['total_par'] = Hole.objects.filter(course_id=self.object.course.pk).aggregate(total_mens_par=Sum('mens_par'))
-        if (context['total_score'].get('total_score') and context['total_par'].get('total_mens_par')):
-            context['player_par'] = context['total_score'].get('total_score') - context['total_par'].get('total_mens_par')
+        context['total_mens_par'] = Hole.objects.filter(course_id=self.object.course.pk).aggregate(total_mens_par=Sum('mens_par'))
+        context['total_womens_par'] = Hole.objects.filter(course_id=self.object.course.pk).aggregate(total_womens_par=Sum('womens_par'))
+        ##context['total_par'] = Hole.objects.filter(course_id=self.object.course.pk).aggregate(total_mens_par=Sum('mens_par'))
+        if (context['total_score'].get('total_score') and (context['total_mens_par'].get('total_mens_par') or context['total_womens_par'].get('total_womens_par'))):
+            if (self.object.created_by.gender != 'MALE'):
+                context['player_par'] = context['total_score'].get('total_score') - context['total_womens_par'].get('total_womens_par')
+            else:
+                context['player_par'] = context['total_score'].get('total_score') - context['total_mens_par'].get('total_mens_par')
         return context
 
 class RoundUpdate(UpdateView):

@@ -3,7 +3,7 @@
 > Track the progress on your goal to sink more birdies! Built with Django
 
 ## Demo
-[golf.grimechristopher.com](http://golf.grimechristopher.com)
+
 
 Please feel free to test out the application by adding your favorite golf courses to the database or entering some data about your latest round.
 
@@ -47,6 +47,6 @@ I have many planned features in mind for continuing the development of this proj
 
 ---
 
-[grimechristopher.com](https://grimechristopher.com)  
-[chris@grimechristopher.com](mailto:chris@grimechristopher.com)  
+[grimechristopher.com](https://chrisgrime.com)  
+[chris@grimechristopher.com](mailto:chris@gchrisgrime.com)  
 [linkedin/in/grimechristopher](https://linkedin/in/grimechristopher)  

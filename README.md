@@ -47,6 +47,7 @@ I have many planned features in mind for continuing the development of this proj
 
 ---
 
-[grimechristopher.com](https://chrisgrime.com)  
-[chris@grimechristopher.com](mailto:chris@gchrisgrime.com)  
+[chrisgrime.com](https://chrisgrime.com)  
+[chris@chrisgrime.com](mailto:chris@chrisgrime.com)  
 [linkedin/in/grimechristopher](https://linkedin/in/grimechristopher)  
+

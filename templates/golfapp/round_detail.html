@@ -11,11 +11,12 @@
     {% if object.completed_on  %}
     <p>and finished at {{object.completed_on|date:"g:i a"}}</p>
     {% endif %}
-</p>    
+</p>
+
 {% if player_par > 0 %}
-<p>You shot {{player_par}} over par</p>
+<p>You shot {{player_par}} over par for a {{ total_score }}</p>
 {% else %}
-<p>You shot {{player_par|stringformat:"+d"|slice:"1:"}} under par</p>
+<p>You shot {{player_par|stringformat:"+d"|slice:"1:"}} under par for a {{ total_score }}</p>
 {% endif %}
 {% if user.is_authenticated and request.user.is_superuser %}
     <a  href="{% url 'round_update'  round.id  %}">Update</a>

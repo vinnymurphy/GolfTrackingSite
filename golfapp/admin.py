@@ -5,12 +5,17 @@ from django.contrib.auth.admin import UserAdmin
 from .forms import GolferUserCreationForm, GolferUserChangeForm
 from .models import GolferUser, Tee, TeeColor, Course, Round, CoursePicture
 
+
 # Register your models here.
 class GolferUserAdmin(UserAdmin):
     add_form = GolferUserCreationForm
     form = GolferUserChangeForm
     model = GolferUser
-    list_display = ['email', 'username',]
+    list_display = [
+        "email",
+        "username",
+    ]
+
 
 admin.site.register(GolferUser, GolferUserAdmin)
 admin.site.register(Tee)
